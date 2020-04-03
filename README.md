@@ -187,16 +187,43 @@ Number of Comments per hour - {0: 447, 1: 683, 2: 1381, 3: 421, 4: 337, 5: 464, 
 Next, we'll use these two dictionaries to calculate the average number of comments for posts created during each hour of the day.
 
 ```
-for app in google_apps_data:
-    name = app[0]
-    if name == 'Instagram':
-        print(app)
+avg_by_hour = [["hour", "avg"]]
+
+for hour in comments_by_hour:
+    avg_by_hour.append([hour, (comments_by_hour[hour]/counts_by_hour[hour])])
 ```
 ```
-['Instagram', 'SOCIAL', '4.5', '66577313', 'Varies with device', '1,000,000,000+', 'Free', '0', 'Teen', 'Social', 'July 31, 2018', 'Varies with device', 'Varies with device']
-['Instagram', 'SOCIAL', '4.5', '66577446', 'Varies with device', '1,000,000,000+', 'Free', '0', 'Teen', 'Social', 'July 31, 2018', 'Varies with device', 'Varies with device']
-['Instagram', 'SOCIAL', '4.5', '66577313', 'Varies with device', '1,000,000,000+', 'Free', '0', 'Teen', 'Social', 'July 31, 2018', 'Varies with device', 'Varies with device']
-['Instagram', 'SOCIAL', '4.5', '66509917', 'Varies with device', '1,000,000,000+', 'Free', '0', 'Teen', 'Social', 'July 31, 2018', 'Varies with device', 'Varies with device']
+print("Average number of comments each hour", avg_by_hour) 
+
+```
+```
+Average number of comments each hour [
+    ['hour', 'avg'],
+    [0, 8.127272727272727], 
+    [1, 11.383333333333333], 
+    [2, 23.810344827586206], 
+    [3, 7.796296296296297], 
+    [4, 7.170212765957447], 
+    [5, 10.08695652173913], 
+    [6, 9.022727272727273], 
+    [7, 7.852941176470588], 
+    [8, 10.25], 
+    [9, 5.5777777777777775], 
+    [10, 13.440677966101696], 
+    [11, 11.051724137931034], 
+    [12, 9.41095890410959], 
+    [13, 14.741176470588234], 
+    [14, 13.233644859813085], 
+    [15, 38.5948275862069], 
+    [16, 16.796296296296298], 
+    [17, 11.46], 
+    [18, 13.20183486238532], 
+    [19, 10.8], 
+    [20, 21.525], 
+    [21, 16.009174311926607], 
+    [22, 6.746478873239437], 
+    [23, 7.985294117647059]
+]
 ```
 We have decided to find and use the entry with the highest user rating count, per duplicate app.
 
