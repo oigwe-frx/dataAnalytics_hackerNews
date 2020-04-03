@@ -167,7 +167,7 @@ for row in hn:
         show_posts.append(row)
     else: other_posts.append(row)
 ```
-## Which type of post receives the most comments
+### Does title effect comment count?
 
 Let's determine if "Ask HN" posts or "Show HN" posts receive more comments on average
 ```
@@ -198,10 +198,12 @@ Avg Show Comments: 10.31669535283993
 ```
 Based on the data analyzed, posts that begin with "Ask HN" receive on average more comments. Since ask posts are more likely to receive comments, we'll focus our remaining analysis just on these posts.
 
-### Cleaning Goal 2: Duplicates
-The googleplaystore.csv has multiple entries for some apps. 
+### Does time effect comment count?
 
-First we must figure out which apps have multiple entries.
+Next, we will determine if ask posts created at a certain time are more likely to attract comments. We'll use the following steps to perform this analysis:
+
+* Calculate the amount of ask posts created in each hour of the day, along with the number of comments received.
+* Calculate the average number of comments ask posts receive by hour created.
 
 ```
         duplicate_apps = []
