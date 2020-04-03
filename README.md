@@ -13,7 +13,7 @@
  Python
 
 **Tools:**
- Original run in Jupyter Notebook
+ Originally run in Jupyter Notebook
 
 **Data Sets:**
  * The data set is of 12 months of Hacker News posts (up to September 26 2016) The data set has been reduced from almost 300,000 rows to approximately 20,000 rows by removing all submissions that did not receive any comments, and then randomly sampling from the remaining submissions. Below are descriptions of the columns:
