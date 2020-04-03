@@ -5,8 +5,8 @@
 
 **Goal:**
  Our goal for this project is to analyze data to learn:
-    * Which posts receive more comments on average - posts whose titles begin with "Ask HN" or posts whose titles begin with "Show HN"?
-    * Do posts created at a certain time receive more comments on average?
+* Which posts receive more comments on average - posts whose titles begin with "Ask HN" or posts whose titles begin with "Show HN"?
+* Do posts created at a certain time receive more comments on average?
  
 
 **Language:**
@@ -18,15 +18,15 @@
 **Data Sets:**
  * The data set is of 12 months of Hacker News posts (up to September 26 2016) The data set has been reduced from almost 300,000 rows to approximately 20,000 rows by removing all submissions that did not receive any comments, and then randomly sampling from the remaining submissions. Below are descriptions of the columns:
 
-    ```
-    id: The unique identifier from Hacker News for the post
-    title: The title of the post
-    url: The URL that the posts links to, if it the post has a URL
-    num_points: The number of points the post acquired, calculated as the total number of upvotes minus the total number of downvotes
-    num_comments: The number of comments that were made on the post
-    author: The username of the person who submitted the post
-    created_at: The date and time at which the post was submitted
-    ```     
+    
+    **id**: The unique identifier from Hacker News for the post
+    **title**: The title of the post
+    **url**: The URL that the posts links to, if it the post has a URL
+    **num_points**: The number of points the post acquired, calculated as the total number of upvotes minus the total number of downvotes
+    **num_comments**: The number of comments that were made on the post
+    **author**: The username of the person who submitted the post
+    **created_at**: The date and time at which the post was submitted
+      
     * File: *HN_posts_year_to_Sep_26_2016*
 
 ---
@@ -151,9 +151,9 @@ Number of columns: 7
 
 
 ---
-## Data Cleaning
+## Analysis 
 
-### Cleaning Goal 1: Filtering
+### Filtering
 We are only concerned with post titles beginning with "Ask HN" or "Show HN". We will create a new list of lists containing just the data for those titles.
 
 ```
@@ -169,6 +169,8 @@ for row in hn:
         show_posts.append(row)
     else: other_posts.append(row)
 ```
+## Which type of post receives the most comments
+
 Let's determine if "Ask HN" posts or "Show HN" posts receive more comments on average
 ```
 total_ask_comments = 0
@@ -196,7 +198,7 @@ print("Avg Show Comments:", avg_show_comments)
 Avg Show Comments: 10.31669535283993
 
 ```
-Based on the data analyzed, posts that begin with "Ask HN" receive on average more comments. 
+Based on the data analyzed, posts that begin with "Ask HN" receive on average more comments. Since ask posts are more likely to receive comments, we'll focus our remaining analysis just on these posts.
 
 ### Cleaning Goal 2: Duplicates
 The googleplaystore.csv has multiple entries for some apps. 
