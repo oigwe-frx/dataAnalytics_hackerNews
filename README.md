@@ -111,7 +111,7 @@ for row in hn:
         show_posts.append(row)
     else: other_posts.append(row)
 ```
-### Does title effect comment count?
+### Does title choice affect comment count?
 
 Let's determine if "Ask HN" posts or "Show HN" posts receive more comments on average
 ```
@@ -142,7 +142,7 @@ Avg Show Comments: 10.31669535283993
 ```
 Based on the data analyzed, posts that begin with "Ask HN" receive on average more comments. Since ask posts are more likely to receive comments, we'll focus our remaining analysis just on these posts.
 
-### Does time effect comment count?
+### Does time of the day affect comment count?
 
 Next, we will determine if ask posts created at a certain time are more likely to attract comments. We'll use the following steps to perform this analysis:
 
@@ -150,25 +150,37 @@ Next, we will determine if ask posts created at a certain time are more likely t
 * Calculate the average number of comments ask posts receive by hour created.
 
 ```
-        duplicate_apps = []
-        unique_apps = []
+import datetime as dt
 
-        for app in apps_data_google:
-            name = app[0]
-            if name in unique_apps:
-                duplicate_apps.append(name)
-            else: 
-                unique_apps.append(name)
+result_list = [["created_at", "num_comments"]]
+
+for row in ask_posts:
+    result_list.append([row[6], int(entry[4])])
+
+counts_by_hour = {}
+comments_by_hour = {}
+
+for row in result_list[1:]:
+    date_time_str = row[0]
+    date_time_obj = dt.datetime.strptime(date_time_str, "%m/%d/%Y %H:%M")
+    parsed_hour = date_time_obj.hour
+    
+    if parsed_hour in counts_by_hour:
+        counts_by_hour[parsed_hour] += 1
+        comments_by_hour[parsed_hour] += row[1]
+    else: 
+        counts_by_hour[parsed_hour] = 1
+        comments_by_hour[parsed_hour] = row[1]
 ```
 ```
-print('Number of duplicate apps:', len(duplicate_apps))
-print('\n')
-print('Examples of duplicate apps:', duplicate_apps[:15])
+print("Number of Posts per hour", counts_by_hour)
 
-Number of duplicate apps: 1181
+Number of Posts per hour {0: 55, 1: 60, 2: 58, 3: 54, 4: 47, 5: 46, 6: 44, 7: 34, 8: 48, 9: 45, 10: 59, 11: 58, 12: 73, 13: 85, 14: 107, 15: 116, 16: 108, 17: 100, 18: 109, 19: 110, 20: 80, 21: 109, 22: 71, 23: 68}
 
-
-Examples of duplicate apps: ['Quick PDF Scanner + OCR FREE', 'Box', 'Google My Business', 'ZOOM Cloud Meetings', 'join.me - Simple Meetings', 'Box', 'Zenefits', 'Google Ads', 'Google My Business', 'Slack', 'FreshBooks Classic', 'Insightly CRM', 'QuickBooks Accounting: Invoicing & Expenses', 'HipChat - Chat Built for Teams', 'Xero Accounting Software']
+```
+```
+print("Number of Comments per hour", comments_by_hour)
+Number of Comments per hour {0: 110, 1: 120, 2: 116, 3: 108, 4: 94, 5: 92, 6: 88, 7: 68, 8: 96, 9: 90, 10: 118, 11: 116, 12: 146, 13: 170, 14: 214, 15: 232, 16: 216, 17: 200, 18: 218, 19: 220, 20: 160, 21: 218, 22: 142, 23: 136}
 ```
 
 We do not want to remove the duplicate entries at random. If we look at the multiple entries for the instagram app, we can see that the entries have different 'user ratings' count.
