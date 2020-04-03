@@ -1,20 +1,13 @@
 # Hacker News
 
 **Premise:**
- For this project, we'll pretend we're working as data analysts for a company that builds Android and iOS mobile apps. We make our apps available on Google Play and the App Store.
-
- We only build apps that are free to download and install, and our main source of revenue consists of in-app ads. This means our revenue for any given app is mostly influenced by the number of users who use our app — the more users that see and engage with the ads, the better. 
+ Hacker News is a site started by the startup incubator Y Combinator, where user-submitted stories ( "posts") are voted and commented upon. Hacker News is extremely popular in tech and startup circles, and posts that make it to the top of Hacker News' listings can get hundreds of thousands of visitors as a result.
 
 **Goal:**
- Our goal for this project is to analyze data to help our developers understand what type of apps are likely to attract more users. 
+ Our goal for this project is to analyze data to learn:
+    * Which posts receive more comments on average - posts whose titles begin with "Ask HN" or posts whose titles begin with "Show HN"?
+    * Do posts created at a certain time receive more comments on average?
  
- To minimize risks and overhead, our validation strategy for an app idea is comprised of three steps:
-
-    * Build a minimal Android version of the app, and add it to Google Play.
-    * If the app has a good response from users, we develop it further.
-    * If the app is profitable after six months, we build an iOS version of the app and add it to the  App Store.
-
- Because our end goal is to add the app on both Google Play and the App Store, we need to find app profiles that are successful on both markets. 
 
 **Language:**
  Python
@@ -23,10 +16,18 @@
  Original run in Jupyter Notebook
 
 **Data Sets:**
- * A data set containing data about approximately 10,000 Android apps from Google Play; the data was collected in August 2018.      
-    * File: *googleplaystore.csv*
- * A data set containing data about approximately 7,000 iOS apps from the App Store; the data was collected in July 2017.        
-    * File: *AppleStore.csv*
+ * The data set is of 12 months of Hacker News posts (up to September 26 2016) The data set has been reduced from almost 300,000 rows to approximately 20,000 rows by removing all submissions that did not receive any comments, and then randomly sampling from the remaining submissions. Below are descriptions of the columns:
+
+    ```
+    id: The unique identifier from Hacker News for the post
+    title: The title of the post
+    url: The URL that the posts links to, if it the post has a URL
+    num_points: The number of points the post acquired, calculated as the total number of upvotes minus the total number of downvotes
+    num_comments: The number of comments that were made on the post
+    author: The username of the person who submitted the post
+    created_at: The date and time at which the post was submitted
+    ```     
+    * File: *HN_posts_year_to_Sep_26_2016*
 
 ---
 ## Functions
