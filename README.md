@@ -150,12 +150,8 @@ Next, we will determine if ask posts created at a certain time are more likely t
 * Calculate the average number of comments ask posts receive by hour created.
 
 ```
-import datetime as dt
-
-result_list = [["created_at", "num_comments"]]
-
 for row in ask_posts:
-    result_list.append([row[6], int(entry[4])])
+    result_list.append([row[6], int(row[4])])
 
 counts_by_hour = {}
 comments_by_hour = {}
@@ -164,29 +160,31 @@ for row in result_list[1:]:
     date_time_str = row[0]
     date_time_obj = dt.datetime.strptime(date_time_str, "%m/%d/%Y %H:%M")
     parsed_hour = date_time_obj.hour
-    
-    if parsed_hour in counts_by_hour:
+
+    if parsed_hour not in counts_by_hour:
+        counts_by_hour[parsed_hour] = 1
+
+        comments_by_hour[parsed_hour] = row[1]
+
+    else: 
         counts_by_hour[parsed_hour] += 1
         comments_by_hour[parsed_hour] += row[1]
-    else: 
-        counts_by_hour[parsed_hour] = 1
-        comments_by_hour[parsed_hour] = row[1]
 ```
 ```
-print("Number of Posts per hour", counts_by_hour)
+print("Number of Posts per hour -", counts_by_hour)
 Note: The hour key is denoted in military time (24 hour). Ex. 1pm = 13
 
-Number of Posts per hour {0: 55, 1: 60, 2: 58, 3: 54, 4: 47, 5: 46, 6: 44, 7: 34, 8: 48, 9: 45, 10: 59, 11: 58, 12: 73, 13: 85, 14: 107, 15: 116, 16: 108, 17: 100, 18: 109, 19: 110, 20: 80, 21: 109, 22: 71, 23: 68}
+Number of Posts per hour - {0: 55, 1: 60, 2: 58, 3: 54, 4: 47, 5: 46, 6: 44, 7: 34, 8: 48, 9: 45, 10: 59, 11: 58, 12: 73, 13: 85, 14: 107, 15: 116, 16: 108, 17: 100, 18: 109, 19: 110, 20: 80, 21: 109, 22: 71, 23: 68}
 
 ```
 ```
-print("Number of Comments per hour", comments_by_hour)
+print("Number of Comments per hour -", comments_by_hour)
 Note: The hour key is denoted in military time (24 hour). Ex. 1pm = 13
 
-Number of Comments per hour {0: 110, 1: 120, 2: 116, 3: 108, 4: 94, 5: 92, 6: 88, 7: 68, 8: 96, 9: 90, 10: 118, 11: 116, 12: 146, 13: 170, 14: 214, 15: 232, 16: 216, 17: 200, 18: 218, 19: 220, 20: 160, 21: 218, 22: 142, 23: 136}
+Number of Comments per hour - {0: 447, 1: 683, 2: 1381, 3: 421, 4: 337, 5: 464, 6: 397, 7: 267, 8: 492, 9: 251, 10: 793, 11: 641, 12: 687, 13: 1253, 14: 1416, 15: 4477, 16: 1814, 17: 1146, 18: 1439, 19: 1188, 20: 1722, 21: 1745, 22: 479, 23: 543}
 ```
 
-We do not want to remove the duplicate entries at random. If we look at the multiple entries for the instagram app, we can see that the entries have different 'user ratings' count.
+Next, we'll use these two dictionaries to calculate the average number of comments for posts created during each hour of the day.
 
 ```
 for app in google_apps_data:
