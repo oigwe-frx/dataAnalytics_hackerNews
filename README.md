@@ -17,23 +17,15 @@
 
 **Data Sets:**
  * The data set is of 12 months of Hacker News posts (up to September 26 2016) The data set has been reduced from almost 300,000 rows to approximately 20,000 rows by removing all submissions that did not receive any comments, and then randomly sampling from the remaining submissions. Below are descriptions of the columns:
-
-    
-    **id**: The unique identifier from Hacker News for the post
-
-    **title**: The title of the post
-
-    **url**: The URL that the posts links to, if it the post has a URL
-
-    **num_points**: The number of points the post acquired, calculated as the total number of upvotes minus the total number of downvotes
-
-    **num_comments**: The number of comments that were made on the post
-
-    **author**: The username of the person who submitted the post
-    
-    **created_at**: The date and time at which the post was submitted
+    * **id**: The unique identifier from Hacker News for the post
+    * **title**: The title of the post
+    * **url**: The URL that the posts links to, if it the post has a URL
+    * **num_points**: The number of points the post acquired, calculated as the total number of upvotes minus the total number of downvotes
+    * **num_comments**: The number of comments that were made on the post
+    * **author**: The username of the person who submitted the post
+    * **created_at**: The date and time at which the post was submitted
       
-    * File: *HN_posts_year_to_Sep_26_2016*
+* File: *HN_posts_year_to_Sep_26_2016*
 
 ---
 ## Functions
