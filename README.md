@@ -174,12 +174,15 @@ for row in result_list[1:]:
 ```
 ```
 print("Number of Posts per hour", counts_by_hour)
+Note: The hour key is denoted in military time (24 hour). Ex. 1pm = 13
 
 Number of Posts per hour {0: 55, 1: 60, 2: 58, 3: 54, 4: 47, 5: 46, 6: 44, 7: 34, 8: 48, 9: 45, 10: 59, 11: 58, 12: 73, 13: 85, 14: 107, 15: 116, 16: 108, 17: 100, 18: 109, 19: 110, 20: 80, 21: 109, 22: 71, 23: 68}
 
 ```
 ```
 print("Number of Comments per hour", comments_by_hour)
+Note: The hour key is denoted in military time (24 hour). Ex. 1pm = 13
+
 Number of Comments per hour {0: 110, 1: 120, 2: 116, 3: 108, 4: 94, 5: 92, 6: 88, 7: 68, 8: 96, 9: 90, 10: 118, 11: 116, 12: 146, 13: 170, 14: 214, 15: 232, 16: 216, 17: 200, 18: 218, 19: 220, 20: 160, 21: 218, 22: 142, 23: 136}
 ```
 
