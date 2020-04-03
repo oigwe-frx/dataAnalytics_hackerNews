@@ -196,10 +196,7 @@ print("Avg Show Comments", avg_show_comments)
 Avg Show Comments 0.0017211703958691911
 
 ```
-The data for column 'Category' (which should be index 1 ([1])) was excluded.
-We will remove the row.
-
-`del apps_data_google[10473]`
+Based on the data analyzed, posts that begin with "Show HN" receive on average more comments. 
 
 ### Cleaning Goal 2: Duplicates
 The googleplaystore.csv has multiple entries for some apps. 
