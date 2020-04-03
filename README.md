@@ -175,12 +175,12 @@ total_ask_comments = 0
 
 for entry in ask_posts:
     num_comments = int(entry[4])
-    total_ask_comments = num_comments
+    total_ask_comments += num_comments
 
 avg_ask_comments = total_ask_comments/len(ask_posts)
-print("Avg Ask Comments", avg_ask_comments)
+print("Avg Ask Comments:", avg_ask_comments)
 
-Avg Ask Comments 0.0011467889908256881
+Avg Ask Comments: 14.038417431192661
 
 ```
 ```
@@ -188,15 +188,15 @@ total_show_comments = 0
 
 for entry in show_posts:
     num_comments = int(entry[4])
-    total_show_comments = num_comments
+    total_show_comments += num_comments
 
 avg_show_comments = total_show_comments/len(show_posts)
-print("Avg Show Comments", avg_show_comments)
+print("Avg Show Comments:", avg_show_comments)
 
-Avg Show Comments 0.0017211703958691911
+Avg Show Comments: 10.31669535283993
 
 ```
-Based on the data analyzed, posts that begin with "Show HN" receive on average more comments. 
+Based on the data analyzed, posts that begin with "Ask HN" receive on average more comments. 
 
 ### Cleaning Goal 2: Duplicates
 The googleplaystore.csv has multiple entries for some apps. 
