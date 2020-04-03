@@ -107,20 +107,23 @@ hn = list(read_file)
 **Initial Exploration of Data**
 
 ```
-print(hn[:5])
+print("First 5 rows of the data set", "hn[:5])
 
+Result
 [['id', 'title', 'url', 'num_points', 'num_comments', 'author', 'created_at'], ['12224879', 'Interactive Dynamic Video', 'http://www.interactivedynamicvideo.com/', '386', '52', 'ne0phyte', '8/4/2016 11:52'], ['10975351', 'How to Use Open Source and Shut the Fuck Up at the Same Time', 'http://hueniverse.com/2016/01/26/how-to-use-open-source-and-shut-the-fuck-up-at-the-same-time/', '39', '10', 'josep2', '1/26/2016 19:30'], ['11964716', "Florida DJs May Face Felony for April Fools' Water Joke", 'http://www.thewire.com/entertainment/2013/04/florida-djs-april-fools-water-joke/63798/', '2', '1', 'vezycash', '6/23/2016 22:20'], ['11919867', 'Technology ventures: From Idea to Enterprise', 'https://www.amazon.com/Technology-Ventures-Enterprise-Thomas-Byers/dp/0073523429', '3', '1', 'hswarna', '6/17/2016 0:01']]
 ```
 ```
 headers = hn[0]
-print(headers)
+print("Header", headers)
 
+Result
 ['id', 'title', 'url', 'num_points', 'num_comments', 'author', 'created_at']
 ```
 ```
 hn = hn[1:]
-print(hn[:4])
+print("Data set without header row", hn)
 
+Result
 [
     ['12224879', 'Interactive Dynamic Video', 'http://www.interactivedynamicvideo.com/', '386', '52', 'ne0phyte', '8/4/2016 11:52'], 
 
@@ -139,19 +142,47 @@ Number of columns: 7
 ---
 ## Data Cleaning
 
-### Cleaning Goal 1: Incorrect Entry
-The googleplaystore.csv has an error in row 10473 (counting header) 
+### Cleaning Goal 1: Filtering
+We are only concerned with post titles beginning with "Ask HN" or "Show HN". We will create a new list of lists containing just the data for those titles.
 
 ```
-print(google_apps_Data[10473])  # incorrect row
-print('\n')
-print(google_header)  # header
+ask_posts = []
+show_posts = []
+other_posts = []
+
+for row in hn:
+    title = row[1]
+    if title.lower().startswith("ask hn"):
+        ask_posts.append(row)
+    elif title.lower().startswith("show hn"):
+        show_posts.append(row)
+    else: other_posts.append(row)
+```
+Let's determine if "Ask HN" posts or "Show HN" posts receive more comments on average
+```
+total_ask_comments = 0
+
+for entry in ask_posts:
+    num_comments = int(entry[4])
+    total_ask_comments = num_comments
+
+avg_ask_comments = total_ask_comments/len(ask_posts)
+print("Avg Ask Comments", avg_ask_comments)
+
+Avg Ask Comments 0.0011467889908256881
+
 ```
 ```
-['Life Made WI-Fi Touchscreen Photo Frame', '1.9', '19', '3.0M', '1,000+', 'Free', '0', 'Everyone', '', 'February 11, 2018', '1.0.19', '4.0 and up']
+total_show_comments = 0
 
+for entry in show_posts:
+    num_comments = int(entry[4])
+    total_show_comments = num_comments
 
-['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type', 'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver', 'Android Ver']
+avg_show_comments = total_show_comments/len(show_posts)
+print("Avg Show Comments", avg_show_comments)
+
+Avg Show Comments 0.0017211703958691911
 
 ```
 The data for column 'Category' (which should be index 1 ([1])) was excluded.
