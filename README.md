@@ -107,6 +107,8 @@ for row in hn:
         show_posts.append(row)
     else: other_posts.append(row)
 ```
+---
+
 ### Does title choice affect comment count?
 
 Let's determine if "Ask HN" posts or "Show HN" posts receive more comments on average
@@ -137,6 +139,8 @@ Avg Show Comments: 10.31669535283993
 
 ```
 **Conclusion** Based on the data analyzed, posts that begin with "Ask HN" receive on average more comments. Since ask posts are more likely to receive comments, we'll focus our remaining analysis just on these posts.
+
+---
 
 ### Does time of the day affect comment count?
 
