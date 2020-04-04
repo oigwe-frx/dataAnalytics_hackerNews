@@ -28,11 +28,7 @@
 * File: *HN_posts_year_to_Sep_26_2016*
 
 ---
-## Functions
 
-```
-```
----
 ## Opening CSV Files
 
 ```
@@ -49,10 +45,10 @@ hn = list(read_file)
 **Initial Exploration of Data**
 
 ```
-print("First 5 rows of the data set -", hn[:5])
+print("First 5 rows of the data set", hn[:5])
 
 
-First 5 rows of the data set - [
+First 5 rows of the data set [
     ['id', 'title', 'url', 'num_points', 'num_comments', 'author', 'created_at',
 
     ['12224879', 'Interactive Dynamic Video', 'http://www.interactivedynamicvideo.com/', '386', '52', 'ne0phyte', '8/4/2016 11:52'],
@@ -66,17 +62,17 @@ First 5 rows of the data set - [
 ```
 ```
 headers = hn[0]
-print("Header - ", headers)
+print("Header ", headers)
 
-Header - ['id', 'title', 'url', 'num_points', 'num_comments', 'author', 'created_at']
+Header ['id', 'title', 'url', 'num_points', 'num_comments', 'author', 'created_at']
 
 ```
 ```
 hn = hn[1:]
-print("Data set without header row -", hn)
+print("Data set without header row", hn)
 
 
-Data set without header row - [
+Data set without header row [
     ['12224879', 'Interactive Dynamic Video', 'http://www.interactivedynamicvideo.com/', '386', '52', 'ne0phyte', '8/4/2016 11:52'], 
 
     ['10975351', 'How to Use Open Source and Shut the Fuck Up at the Same Time', 'http://hueniverse.com/2016/01/26/how-to-use-open-source-and-shut-the-fuck-up-at-the-same-time/', '39', '10', 'josep2', '1/26/2016 19:30'],
@@ -175,17 +171,17 @@ for row in result_list[1:]:
         comments_by_hour[parsed_hour] += row[1]
 ```
 ```
-print("Number of Posts per hour -", counts_by_hour)
+print("Number of Posts per hour", counts_by_hour)
 Note: The hour key is denoted in military time (24 hour). Ex. 1pm = 13
 
-Number of Posts per hour - {0: 55, 1: 60, 2: 58, 3: 54, 4: 47, 5: 46, 6: 44, 7: 34, 8: 48, 9: 45, 10: 59, 11: 58, 12: 73, 13: 85, 14: 107, 15: 116, 16: 108, 17: 100, 18: 109, 19: 110, 20: 80, 21: 109, 22: 71, 23: 68}
+Number of Posts per hour {0: 55, 1: 60, 2: 58, 3: 54, 4: 47, 5: 46, 6: 44, 7: 34, 8: 48, 9: 45, 10: 59, 11: 58, 12: 73, 13: 85, 14: 107, 15: 116, 16: 108, 17: 100, 18: 109, 19: 110, 20: 80, 21: 109, 22: 71, 23: 68}
 
 ```
 ```
-print("Number of Comments per hour -", comments_by_hour)
+print("Number of Comments per hour", comments_by_hour)
 Note: The hour key is denoted in military time (24 hour). Ex. 1pm = 13
 
-Number of Comments per hour - {0: 447, 1: 683, 2: 1381, 3: 421, 4: 337, 5: 464, 6: 397, 7: 267, 8: 492, 9: 251, 10: 793, 11: 641, 12: 687, 13: 1253, 14: 1416, 15: 4477, 16: 1814, 17: 1146, 18: 1439, 19: 1188, 20: 1722, 21: 1745, 22: 479, 23: 543}
+Number of Comments per hour {0: 447, 1: 683, 2: 1381, 3: 421, 4: 337, 5: 464, 6: 397, 7: 267, 8: 492, 9: 251, 10: 793, 11: 641, 12: 687, 13: 1253, 14: 1416, 15: 4477, 16: 1814, 17: 1146, 18: 1439, 19: 1188, 20: 1722, 21: 1745, 22: 479, 23: 543}
 ```
 
 Next, we'll use these two dictionaries to calculate the average number of comments for posts created during each hour of the day.
@@ -249,6 +245,7 @@ Top 5 Hours for Ask Posts Comments
 21:00: 16.01 average comments per post
 
 ```
+**Conclusion** According to the data analyzed, time posted does affect the average number of comments a post can receive. The best time to post is between 15:00 and 16:00 hours (between 3-4pm). Posts made during this time receive on average 38.59 comments. The worst time to post is between 23:00 and 0:00 hours (11pm-12am). Posts made during this time receive on average 7.99 average comments. 
 
 
 
