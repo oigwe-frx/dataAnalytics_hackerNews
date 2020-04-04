@@ -49,10 +49,10 @@ hn = list(read_file)
 **Initial Exploration of Data**
 
 ```
-print("First 5 rows of the data set", hn[:5])
+print("First 5 rows of the data set -", hn[:5])
 
 
-[
+First 5 rows of the data set - [
     ['id', 'title', 'url', 'num_points', 'num_comments', 'author', 'created_at',
 
     ['12224879', 'Interactive Dynamic Video', 'http://www.interactivedynamicvideo.com/', '386', '52', 'ne0phyte', '8/4/2016 11:52'],
@@ -66,17 +66,17 @@ print("First 5 rows of the data set", hn[:5])
 ```
 ```
 headers = hn[0]
-print("Header", headers)
+print("Header - ", headers)
 
+Header - ['id', 'title', 'url', 'num_points', 'num_comments', 'author', 'created_at']
 
-['id', 'title', 'url', 'num_points', 'num_comments', 'author', 'created_at']
 ```
 ```
 hn = hn[1:]
-print("Data set without header row", hn)
+print("Data set without header row -", hn)
 
 
-[
+Data set without header row - [
     ['12224879', 'Interactive Dynamic Video', 'http://www.interactivedynamicvideo.com/', '386', '52', 'ne0phyte', '8/4/2016 11:52'], 
 
     ['10975351', 'How to Use Open Source and Shut the Fuck Up at the Same Time', 'http://hueniverse.com/2016/01/26/how-to-use-open-source-and-shut-the-fuck-up-at-the-same-time/', '39', '10', 'josep2', '1/26/2016 19:30'],
@@ -140,7 +140,7 @@ print("Avg Show Comments:", avg_show_comments)
 Avg Show Comments: 10.31669535283993
 
 ```
-Based on the data analyzed, posts that begin with "Ask HN" receive on average more comments. Since ask posts are more likely to receive comments, we'll focus our remaining analysis just on these posts.
+**Conclusion** Based on the data analyzed, posts that begin with "Ask HN" receive on average more comments. Since ask posts are more likely to receive comments, we'll focus our remaining analysis just on these posts.
 
 ### Does time of the day affect comment count?
 
@@ -150,6 +150,10 @@ Next, we will determine if ask posts created at a certain time are more likely t
 * Calculate the average number of comments ask posts receive by hour created.
 
 ```
+import datetime as dt
+
+result_list = [["created_at", "num_comments"]]
+
 for row in ask_posts:
     result_list.append([row[6], int(row[4])])
 
