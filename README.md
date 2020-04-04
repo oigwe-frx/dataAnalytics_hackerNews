@@ -138,7 +138,9 @@ print("Avg Show Comments:", avg_show_comments)
 Avg Show Comments: 10.31669535283993
 
 ```
-**Conclusion** Based on the data analyzed, posts that begin with "Ask HN" receive on average more comments. Since ask posts are more likely to receive comments, we'll focus our remaining analysis just on these posts.
+**Conclusion:** 
+
+Based on the data analyzed, posts that begin with "Ask HN" receive on average more comments. Since ask posts are more likely to receive comments, we'll focus our remaining analysis just on these posts.
 
 ---
 
@@ -249,7 +251,9 @@ Top 5 Hours for Ask Posts Comments
 21:00: 16.01 average comments per post
 
 ```
-**Conclusion** According to the data analyzed, time posted does affect the average number of comments a post can receive. The best time to post is between 15:00 and 16:00 hours (between 3-4pm). Posts made during this time receive on average 38.59 comments. The worst time to post is between 23:00 and 0:00 hours (11pm-12am). Posts made during this time receive on average 7.99 average comments. 
+**Conclusion:** 
+
+According to the data analyzed, time posted does affect the average number of comments a post can receive. The best time to post is between 15:00 and 16:00 hours (between 3-4pm). Posts made during this time receive on average 38.59 comments. The worst time to post is between 23:00 and 0:00 hours (11pm-12am). Posts made during this time receive on average 7.99 average comments. 
 
 
 
