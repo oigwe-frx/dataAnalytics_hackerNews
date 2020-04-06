@@ -48,7 +48,9 @@ hn = list(read_file)
 print("First 5 rows of the data set", hn[:5])
 
 
-First 5 rows of the data set [
+First 5 rows of the data set 
+
+[
     ['id', 'title', 'url', 'num_points', 'num_comments', 'author', 'created_at',
 
     ['12224879', 'Interactive Dynamic Video', 'http://www.interactivedynamicvideo.com/', '386', '52', 'ne0phyte', '8/4/2016 11:52'],
